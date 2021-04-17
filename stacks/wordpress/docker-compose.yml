@@ -7,7 +7,7 @@ services:
     ports:
       - ${WEB_PORT}:80
     environment:
-      WORDPRESS_DB_HOST: wpdb:3306
+      WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wpdbuser
       WORDPRESS_DB_PASSWORD: wpdbpasswd
       WORDPRESS_DB_NAME: wpdb
