@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - ${WEB_PORT}:80
+    environment:
+      WORDPRESS_DB_HOST: wpdb:3306
+      WORDPRESS_DB_USER: wpdbuser
+      WORDPRESS_DB_PASSWORD: wpdbpasswd
+      WORDPRESS_DB_NAME: wpdb
+    volumes:
+      - /mnt/user/appdata/${WP_NAME}/html:/var/www/html
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: wpdb
+      MYSQL_USER: wpdbuser
+      MYSQL_PASSWORD: wpdbpasswd
+      MYSQL_ROOT_PASSWORD: ${MYSQL_DATABASE_PASSWORD}
+    volumes:
+      - /mnt/user/appdata/${WP_NAME}/db:/var/lib/mysql

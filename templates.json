@@ -12,23 +12,26 @@
       "platform": "linux",
       "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/wordpress.png",
       "repository": {
-        "url": "https://github.com/portainer/templates",
+        "url": "https://github.com/ezecuervo/portainer-templates",
         "stackfile": "stacks/wordpress/docker-compose.yml"
       },
       "env": [
+        {
+          "name": "WP_NAME",
+          "label": "Wordpress container name",
+          "description": "Used name to this new Wordpress instance."
+        },
+        {
+          "name": "WEB_PORT",
+          "label": "Port where WP will be published",
+          "description": "Port where WP will be published (80 is the default)."
+        },
         {
           "name": "MYSQL_DATABASE_PASSWORD",
           "label": "Database root password",
           "description": "Password used by the MySQL root user."
         }
       ]
-    },
-    {
-      "type": 4,
-      "title": "Wordpress",
-      "description": "Wordpress setup with a MySQL database",
-      "note": "Deploys a Wordpress instance connected to a MySQL database.",
-      "stackfile": "https://raw.githubusercontent.com/portainer/templates/master/stacks/wordpress/edge/docker-stack.yml"
     }
   ]
 }
